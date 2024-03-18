@@ -1,5 +1,13 @@
 const LOCAN_KEY = "todomvc"
 
+/**
+ * 
+ * 生成一个任务的唯一编号，时间戳+4位随机数
+ */
+export function generateId() {
+    return Date.now() + Math.random().toString(16).substr(2, 4);
+}
+
 
 /**
  * 获取目前所有的任务

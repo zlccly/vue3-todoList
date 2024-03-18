@@ -9,6 +9,8 @@
           autofocus=""
           autocomplete="off"
           placeholder="What needs to be done?"
+          v-model="newTodoRef"
+          @keyup.enter="addTodo"
         />
       </header>
       <section class="main">
@@ -61,12 +63,14 @@
 
 <script>
 import useTodoList from "./composition/useTodoList";
+import useNewTodo from "./composition/useNewTodo";
 export default {
   setup() {
-    const todoList = useTodoList();
+    const {todosRef} = useTodoList();
 
     return {
-      todosRef: todoList.todosRef
+      todosRef,
+      ...useNewTodo(todosRef)
     };
   },
 };
